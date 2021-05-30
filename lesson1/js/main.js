@@ -15,9 +15,7 @@ const renderProduct = (title, price) => {
 
 const renderPage = (list = [{ title: "test", price: 300 }]) => {
     const productsList = list.map(item => renderProduct(item.title, item.price));
-    productsList.forEach(card => {
-        document.querySelector(".products").innerHTML += card;
-    });
+    document.querySelector(".products").innerHTML = productsList.join('');
 };
 
 renderPage(products);

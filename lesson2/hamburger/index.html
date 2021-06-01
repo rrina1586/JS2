@@ -1,0 +1,71 @@
+<script>
+    "use strict";
+
+    class Hamburger {
+        constructor(size, stuffing) {
+            this.size = size;
+            this.stuffing = [];
+            this.goods = [];
+            this.topping = [];
+            this._fetchProducts();
+            this._fetchStuffing();
+            this._fetchTopping();
+
+        }
+
+        _fetchProducts() {
+            this.goods = [
+                { id: 1, size: "Small", price: 50, calories: 20 },
+                { id: 2, size: "Big", price: 100, calories: 40 }
+            ];
+        }
+
+        _fetchStuffing() {
+            this.stuffing = [
+                { id: 3, staffing: "cheese", price: 10, calories: 20 },
+                { id: 4, staffing: "salad", price: 20, calories: 5 },
+                { id: 5, staffing: "potato", price: 15, calories: 10 }
+
+            ];
+        }
+
+        _fetchTopping() {
+            this.topping = [
+                { id: 6, staffing: "spice", price: 15, calories: 0 },
+                { id: 7, staffing: "mayo", price: 20, calories: 5 }
+            ];
+        }
+
+        createHam(size, stuffing) {
+            let ham = new Hamburger(title, parseInt(Math.random() * 4000 + 1000), owner);
+            return ham;
+        }
+
+        addTopping(topping) {    // Добавить добавку
+        }
+        removeTopping(topping) { // Убрать добавку
+        }
+        getToppings(topping) {   // Получить список добавок
+        }
+        getSize() {              // Узнать размер гамбургера
+        }
+        getStuffing() {          // Узнать начинку гамбургера
+        }
+        calculatePrice() {       // Узнать цену
+        }
+        calculateCalories() {    // Узнать калорийность
+        }
+    }
+
+    class Order {
+        init() {
+            let sz = parseInt(Math.random() * 2 + 1);
+            let st = parseInt(Math.random() * 3 + 1);
+            let ham = new Hamburger(sz, st);
+            console.log(ham);
+        }
+    }
+
+    let order = new Order();
+    order.init();
+</script>

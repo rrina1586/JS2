@@ -1,0 +1,33 @@
+<script>
+
+    function Person(firstName, lastName, year) {
+        this.name = firstName;
+        this.family = lastName;
+        this.year = year;
+        this.calcAge = () => console.log(new Date().getFullYear() - this.year);
+    }
+
+    let user = new Person("Иван", "Иванов", 1990);
+    // user.test = 1;
+    // user.__proto__.test = 2;
+    // console.log(user.test);
+    // console.log(user);
+    // user.calcAge();
+
+
+    // 1. Вызываем функцию конструктор базового класса
+    // 2. обавляем уникальные свойства
+    // 3. Получаем свойства прототипа на основе прототипа базового класса
+    function Teacher(firstName, lastName, year, subject) {
+        Person.call(this, firstName, lastName, year);
+        this.subject = subject;
+    }
+
+    // наследование свойств в proto
+    Teacher.prototype = Object.create(Person.prototype);
+    Teacher.prototype.contruct = Person;
+
+    let t = new Teacher("Василий", "Васильев", 1970, "математика");
+    console.log(t);
+
+</script>

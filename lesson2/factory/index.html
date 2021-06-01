@@ -1,0 +1,46 @@
+<script>
+    class Car {
+        constructor(title, price, owner) {
+            this.title = title;
+            this.price = price;
+            this.owner = owner;
+        }
+    }
+
+    class Owner {
+        constructor(name) {
+            this.name = name;
+        }
+    }
+
+    class Factory {
+        createCar(title, owner) {
+            let car = new Car(title, parseInt(Math.random() * 4000 + 1000), owner);
+            return car;
+        }
+    }
+
+    class Order {
+        init() {
+            let companies = ["Элвис", "Моторс", "Карсар"];
+            let n = parseInt(Math.random() * 30 + 20);// кол-во авто, которые нужно создать
+            let titles = ["Audi", "Skoda", "VW"];
+            let factory = new Factory();
+            //let cars = [];
+            let s = 0;
+            for (let i = 0; i < n; i++) {
+                let comp = companies[parseInt(Math.random() * companies.length)];//получили случайную компанию из массива
+                let owner = new Owner(comp);
+                let title = titles[parseInt(Math.random() * titles.length)];
+                let car = factory.createCar(title, owner);
+                console.log(`Автомобиль ${car.title} стоит ${car.price}. Заказчик ${car.owner.name}`);
+                s += car.price;
+                //cars.push(car);
+            }
+            console.log(`Общая цена авто ${s}`);
+        }
+    }
+
+    let order = new Order();
+    order.init();
+</script>

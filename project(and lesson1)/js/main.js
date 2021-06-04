@@ -44,11 +44,17 @@ class ProductsList {
     }
 
     priceSum() {
-        let sum = 0;
-        for (let item of this.goods) {
-            sum += item.price;
-        }
-        console.log(sum);
+        // let sum = 0;
+        // for (let item of this.goods) {
+        //     sum += item.price;
+        // }
+        // console.log(sum);
+
+        // или так
+        // reduce используется для последовательной обработки каждого элемента массива
+        // с сохранением промежуточного результата
+        let res = this.allProducts.reduce((sum, item) => sum + item.price, 0);
+        console.log(res);
     }
 }
 
@@ -80,6 +86,32 @@ class ProductItem {
 //         btn.addEventListener("click", function () {
 
 //         }
+//     }
+// }
+
+
+// из решения
+// class Cart {
+//     addGoods() {
+
+//     }
+
+//     removeGoods() {
+
+//     }
+
+//     changeGoods() {
+
+//     }
+
+//     render() {
+
+//     }
+// }
+
+// class ElemCart {
+//     render() {
+
 //     }
 // }
 

@@ -1,71 +1,62 @@
-<script>
-    "use strict";
+<!DOCTYPE html>
+<html lang="en">
 
-    class Hamburger {
-        constructor(size, stuffing) {
-            this.size = size;
-            this.stuffing = [];
-            this.goods = [];
-            this.topping = [];
-            this._fetchProducts();
-            this._fetchStuffing();
-            this._fetchTopping();
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гамбургер</title>
+</head>
 
-        }
+<body>
+    <form action="#" id="hamburger-form">
+        <h2 id="ham-top">Составь свой бургер</h2>
+        <fieldset class="humburger-fieldset">
+            <h3>Выбери размер бургера</h3>
+            <input type="radio" id="bigBurger" name="size" value="big" class="ham-input" data-price=100 data-calories=40
+                checked>
+            <label for="bigBurger">Большой бургер (цена 100, калории 40)</label><br>
+            <input type="radio" id="smallBurger" name="size" value="small" class="ham-input" data-price=50
+                data-calories=20>
+            <label for="smallBurger">Маленький бургер (цена 50, калории 20)</label>
+        </fieldset>
 
-        _fetchProducts() {
-            this.goods = [
-                { id: 1, size: "Small", price: 50, calories: 20 },
-                { id: 2, size: "Big", price: 100, calories: 40 }
-            ];
-        }
+        <fieldset class="hamburger-fieldset-inside">
+            <h3>Выбери начинку бургера</h3>
+            <input type="radio" id="cheese" name="add" value="cheese" class="ham-input" data-price=10 data-calories=20
+                checked>
+            <label for="cheese">Сыр (цена 10, калории 20)</label><br>
+            <input type="radio" id="salad" name="add" value="salad" class="ham-input" data-price=20 data-calories=5>
+            <label for="salad">Салат (цена 20, калории 5)</label><br>
+            <input type="radio" id="potato" name="add" value="potato" class="ham-input" data-price=15 data-calories=10>
+            <label for="potato">Картошка (цена 15, калории 10)</label>
+        </fieldset>
 
-        _fetchStuffing() {
-            this.stuffing = [
-                { id: 3, staffing: "cheese", price: 10, calories: 20 },
-                { id: 4, staffing: "salad", price: 20, calories: 5 },
-                { id: 5, staffing: "potato", price: 15, calories: 10 }
+        <fieldset class="hamburger-fieldset-inside">
+            <h3>Выбери добавку</h3>
+            <input type="checkbox" id="spice" name="topping" value="spice" class="ham-input" data-price=15
+                data-calories=0 checked>
+            <label for="spice">Приправа (цена 15, калории 0)</label><br>
+            <input type="checkbox" id="mayo" name="topping" value="mayo" class="ham-input" data-price=20
+                data-calories=5>
+            <label for="mayo">Майонез (цена 20, калории 5)</label>
+        </fieldset>
 
-            ];
-        }
+        <div id="check">Собрать бургер</div>
+        <p id="result">Итоговая стоимость: <span id="price">0</span><br>Всего калорий: <span id="calories">0</span></p>
+    </form>
+    <script src="main.js"></script>
+    <script>
+        "use strict";
 
-        _fetchTopping() {
-            this.topping = [
-                { id: 6, staffing: "spice", price: 15, calories: 0 },
-                { id: 7, staffing: "mayo", price: 20, calories: 5 }
-            ];
+        window.onload = () => {
+            document.getElementById("check").addEventListener("click", () => {
+                let burger = new Burger("size", "add", "topping");
+                console.log(burger);
+                burger.showSum("#price", "#calories");
+            });
         }
+    </script>
+</body>
 
-        createHam(size, stuffing) {
-            let ham = new Hamburger(title, parseInt(Math.random() * 4000 + 1000), owner);
-            return ham;
-        }
-
-        addTopping(topping) {    // Добавить добавку
-        }
-        removeTopping(topping) { // Убрать добавку
-        }
-        getToppings(topping) {   // Получить список добавок
-        }
-        getSize() {              // Узнать размер гамбургера
-        }
-        getStuffing() {          // Узнать начинку гамбургера
-        }
-        calculatePrice() {       // Узнать цену
-        }
-        calculateCalories() {    // Узнать калорийность
-        }
-    }
-
-    class Order {
-        init() {
-            let sz = parseInt(Math.random() * 2 + 1);
-            let st = parseInt(Math.random() * 3 + 1);
-            let ham = new Hamburger(sz, st);
-            console.log(ham);
-        }
-    }
-
-    let order = new Order();
-    order.init();
-</script>
+</html>

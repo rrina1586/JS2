@@ -1,0 +1,28 @@
+<script>
+    "use strict";
+
+    let userJson = '{"name":"Petr", "age":25, "isAdmin":true}';
+    //console.log(userJson);
+    let user = JSON.parse(userJson);//преобразует JSON в объект
+    //console.log(user);
+
+    user.dateCreated = "2021-06-04";
+    user.adress = {
+        city: "Москва",
+        postalCode: "34535"
+    }
+
+    //let user2 = JSON.stringify(user);//преобразует объект в строку JSON
+    //let user2 = JSON.stringify(user, ["name", "dateCreated"]);//преобразует только указанные свойства
+    let user2 = JSON.stringify(user, ["name", "dateCreated", "age", "adress", "isAdmin", "name"], 4);//после запятой - кол-во пробелов, 
+    //будет выводится в отформатированном виде
+    //console.log(user2);
+    let user3 = JSON.parse(user2, (key, value) => {
+        if (key == "dateCreated") {
+            value = new Date(value);
+        }
+        return value;
+    });
+    console.log(user3);
+
+</script>

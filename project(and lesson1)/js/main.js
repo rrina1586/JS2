@@ -53,7 +53,7 @@ class ProductsList {
         // или так
         // reduce используется для последовательной обработки каждого элемента массива
         // с сохранением промежуточного результата
-        let res = this.allProducts.reduce((sum, item) => sum + item.price, 0);
+        let res = this.goods.reduce((sum, item) => sum + item.price, 0);
         console.log(res);
     }
 }

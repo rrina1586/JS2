@@ -8,6 +8,10 @@ form {
     border-color: red;
 }
 
+.error-msg {
+    color: red;
+}
+
 .green {
     border-color: green;
 }

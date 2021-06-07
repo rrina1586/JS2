@@ -6,8 +6,9 @@ document.querySelector(".btn").addEventListener("click", () => {
     let emailValue = document.querySelector("#email").value;
 
     let name = nameValue.match(/^[a-zа-яё]+$/igu);
-    let tel = telValue.match(/^\+7\(\d{3}\)\d{3}-\d{4}/);
-    let email = emailValue.match(/^[a-z0-9]{2}.?-?[a-z0-9]{4}@mail.ru$/);
+    let tel = telValue.match(/^\+7\(\d{3}\)\d{3}-\d{4}$/);
+    //let email = emailValue.match(/^[a-z0-9]{2}.?-?[a-z0-9]{4}@mail.ru$/);
+    let email = emailValue.match(/^[\w._-]+@\w+\.[a-z]{2,4}$/i);
 
     if (name == null) {
         document.querySelector("#name").classList.toggle("error");
@@ -29,18 +30,4 @@ document.querySelector(".btn").addEventListener("click", () => {
     } else {
         document.querySelector("#email").classList.toggle("green");
     }
-
-
-
-    // let arr = [];
-    // arr.push(name, tel, email);
-    // console.log(arr);
-    // arr.forEach(el => {
-    //     if (el == null) {
-    //         document.querySelector(`#${el}`).classList.toggle("error");//Можно ли обратиться к имени переменной в массиве?
-    //         alert("Поле заполнено некорректно");
-    //     } else {
-    //         document.querySelector(`#${el}`).classList.toggle("green");
-    //     }
-    // });
-});
+})

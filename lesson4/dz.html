@@ -33,24 +33,25 @@
 
         let text = document.querySelector(".text");
         //text.textContent = text.textContent.replace(/'/g, '"');
+        text.textContent = text.textContent.replace(/\B'|'\B/g, '"');//нормальное решение
 
-        let regExp = /'.+'/g;
-        let arr = text.textContent.match(regExp);
-        let res = [];
-        arr.forEach(el => {
-            el = el.replace(/'/, '"');
-            el = el.replace(/'$/, '"');
-            res.push(el);
-            res.push("");
-            if (res.length % 2 == 0) {
-                res.push("Two: ");
-            } else {
-                res.push("One: ");
-            }
-        });
-        res.unshift("One: ");
-        res.pop();
-        console.log(res.join(" "));
+        //     let regExp = /'.+'/g;
+        // let arr = text.textContent.match(regExp);
+        // let res = [];
+        // arr.forEach(el => {
+        //     el = el.replace(/'/, '"');
+        //     el = el.replace(/'$/, '"');
+        //     res.push(el);
+        //     res.push("");
+        //     if (res.length % 2 == 0) {
+        //         res.push("Two: ");
+        //     } else {
+        //         res.push("One: ");
+        //     }
+        // });
+        // res.unshift("One: ");
+        // res.pop();
+        // console.log(res.join(" "));
 
     </script>
 </body>

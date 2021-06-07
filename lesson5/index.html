@@ -1,0 +1,76 @@
+<div id="app">
+    <div v-for="item of products">
+        <p>{{ item.title }}</p>
+        <p>{{ item.price }}</p>
+        <p>Цена с учётом количества: {{ item.price * item.quantity }}</p>
+        <img :src="item.img">
+    </div>
+    <h1>{{ name }}</h1>
+    <a :href="link">Перейти в поисковик</a>
+    <!-- <button v-on:click="counter++">Increase</button> -->
+    <button @click="increase(5)">Increase</button>
+    <p>{{ counter }}</p>
+    <h2>{{ sayHello() }}</h2>
+    <p>{{ counter >= 10 ? "Больше 10" : "Меньше 10" }}</p>
+    <h2 v-if="show">Text is visible</h2>
+    <h2 v-else="show">Text is not visible</h2>
+    <button @click="show=!show">OK</button>
+    <p @mousemove="getCoordinates()">Some long long text {{ x }} / {{ y }}
+        <span @mousemove.stop>No move</span>
+    </p>
+    <!-- <input type="text" v-model="name"> -->
+    <input type="text" v-model.lazy="name">
+    <div v-html='completeEl'></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+
+<script>
+    "use strict";
+
+    const app = new Vue({
+        el: "#app",
+        data: {
+            name: "Игорь",
+            link: "https://google.com",
+            counter: 0,
+            show: false,
+            x: 0,
+            y: 0,
+            completeEl: '<a href="https://google.com">Перейти в поисковик</a>',
+            products: [
+                {
+                    title: "laptop",
+                    price: 10000,
+                    quantity: 3,
+                    img: "https://via.placeholder.com/200x150"
+                },
+                {
+                    title: "mouse",
+                    price: 1000,
+                    quantity: 5,
+                    img: "https://via.placeholder.com/200x150"
+                },
+                {
+                    title: "key",
+                    price: 15000,
+                    quantity: 8,
+                    img: "https://via.placeholder.com/200x150"
+                }
+            ]
+        },
+        methods: {
+            sayHello() {
+                return `${this.name}, привет!`
+            },
+            increase(x) {
+                this.counter += x;
+            },
+            getCoordinates() {
+                this.x = event.clientX;
+                this.y = event.clientY;
+            }
+        }
+    });
+
+</script>

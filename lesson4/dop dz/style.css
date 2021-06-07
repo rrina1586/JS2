@@ -1,0 +1,13 @@
+form {
+    width: 30%;
+    display: grid;
+    grid-gap: 15px;
+}
+
+.error {
+    border-color: red;
+}
+
+.green {
+    border-color: green;
+}

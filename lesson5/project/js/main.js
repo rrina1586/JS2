@@ -4,12 +4,14 @@ const app = new Vue({
     el: '#app',
     data: {
         catalogUrl: '/catalogData.json',
+        cartUrl: "/getBasket.json",
         products: [],
         imgCatalog: "https://via.placeholder.com/200x150",
-        userSearch: '',
-        show: false,
+        imgCart: "https://via.placeholder.com/50x100",
+        userSearch: '',//фильтр
+        show: false,//показ корзины
         filtered: [],
-        allProducts: []
+        cartItems: []
     },
     methods: {
         getJson(url) {
@@ -19,41 +21,60 @@ const app = new Vue({
                     console.log(error);
                 })
         },
-        addProduct(product) {
-            console.log(product.id_product);
+        addProduct(item) {
+            this.getJson(`${API}/addToBasket.json`)
+                .then(data => {
+                    if (data.result === 1) {
+                        let find = this.cartItems.find(el => el.id_product === item.id_product);
+                        if (find) {
+                            find.quantity++;
+                        } else {
+                            const prod = Object.assign({ quantity: 1 }, item);//создание нового объекта на основе двух, указанных в параметрах
+                            this.cartItems.push(prod);
+                        }
+                    }
+                })
         },
-        filter(userSearch) {
-            const regexp = new RegExp(userSearch, 'i');
-            this.filtered = this.allProducts.filter(product => regexp.test(product.product_name));
-            this.allProducts.forEach(el => {
-                const block = document.querySelector(`.product-item[data-id="${el.id_product}"]`);
-                if (!this.filtered.includes(el)) {
-                    block.classList.add('invisible');
-                } else {
-                    block.classList.remove('invisible');
-                }
-            });
-            // document.querySelector('.btn-search').addEventListener('submit', e => {
-            //     e.preventDefault();//отменяет действие по умолчанию (перезагрузку страницы)
-            //     this.filter(document.querySelector('.btn-search').searchLine)
-            // })
+        remove(item) {
+            this.getJson(`${API}/addToBasket.json`)
+                .then(data => {
+                    if (data.result === 1) {
+                        if (item.quantity > 1) {
+                            item.quantity--;
+                        } else {
+                            this.cartItems.splice(this.cartItems.indexOf(item), 1);
+                        }
+                    }
+                })
+        },
+        filter() {
+            let regexp = new RegExp(this.userSearch, 'i');
+            this.filtered = this.filtered.filter(el => regexp.test(el.product_name));
         }
     },
     mounted() {
+        this.getJson(`${API + this.cartUrl}`)
+            .then(data => {
+                for (let item of data.contents) {
+                    this.cartItems.push(item);
+                }
+            });
         this.getJson(`${API + this.catalogUrl}`)
             .then(data => {
                 for (let el of data) {
-                    this.products.push(el);
+                    this.$data.products.push(el);
+                    this.$data.filtered.push(el);
                 }
             });
         this.getJson(`getProducts.json`)
             .then(data => {
                 for (let el of data) {
                     this.products.push(el);
+                    this.filtered.push(el);
                 }
             })
     }
-})
+});
 
 // class List {
 //     constructor(url, container, list = list2){

@@ -23,7 +23,7 @@
 
         </header>
         <main>
-            <error :visibility="error"></error>
+            <error :visibility="error" v-if="error"></error>
             <products :products="filtered" :img="imgProduct" @add-product="addProduct"></products>
         </main>
     </div>

@@ -1,0 +1,13 @@
+{
+    "amount": 46600,
+    "countGoods": 2,
+    "contents": [
+        {
+            "quantity": 2,
+            "id_product": 1,
+            "product_name": "product 1",
+            "price": 52,
+            "imgPath": "img/products/1.jpg"
+        }
+    ]
+}

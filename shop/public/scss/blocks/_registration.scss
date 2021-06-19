@@ -1,0 +1,91 @@
+.reg-title {
+    @include font(24px, 149px);
+    background-color: #F8F3F4;
+    text-transform: uppercase;
+    color: $dark-pink;
+    display: flex;
+    align-items: center;
+    margin: 0 0 64px;
+    height: 148px;
+}
+
+.registration {
+    display: flex;
+
+    .reg-form__items {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .user-title {
+        @include font(16px, 19px, 300);
+    }
+    
+    .user-info {
+        @include block-size(359px, 44px);
+        margin: 21px 0;
+        border: 1px solid #A4A4A4;
+    }
+    
+    .gender {
+        @include font(11px, 13px, 300);
+        margin: 0 0 33px;
+    }
+    
+    #male {
+        margin: 0 10px 0 0;
+    }
+    
+    #female {
+        margin: 0 10px 0 20px;
+    }
+    
+    ::-webkit-input-placeholder {
+        margin: 13px 0 16px 17px;
+        @include font(13px, 16px, 300);
+        color: #B1B1B1;
+    }
+    
+    .password-help {
+        width: 359px;
+        @include font(13px, 16px, 300);
+        color: #B1B1B1;
+        margin: 0 0 39px;
+    }
+    
+    .reg-btn {
+        @include block-size(167px, 50px);
+        border: none;
+        background-color: $dark-pink;
+        text-transform: uppercase;
+        color: white;
+        margin: 0 0 96px;
+    }
+    
+    .reg-loyalty {
+        margin: 0 0 0 129px;
+        @include font(24px, 29px, 300);
+
+        &__title {
+            text-transform: uppercase;
+            @include font(24px, 29px, 300);
+            margin: 0 0 22px;
+        }
+
+        &__subtitle {
+            @include font(24px, 29px, 300);
+        }
+    }
+    
+    .list-styles {
+        padding: 21px 0 0;
+        margin: 0 0 0 23px;
+        list-style: url('../img/list_style.svg') outside;
+
+        &__li {
+            margin: 0 0 16px 0;
+            padding: 0 0 0 23px;
+        }
+    }
+}
+

@@ -1,0 +1,96 @@
+.header {
+    background-color: $dark-blue;
+    position: relative;
+
+    &__wrapper {
+        min-height: 75px;
+        @include flex-center-space-between ();
+    }
+
+    // не работает
+    // &__controls {
+    //     display: flex;
+    //     align-items: center;
+    // }
+
+    &__logo {
+        margin: 0 41px 0 0;
+        // @extend %margin-r-45; работает тоже
+    }
+
+    .header__button {
+        background-color: transparent;
+        border: none;
+        margin: 0 34px 0 0;
+    }
+    
+    .header__button:hover +.header__navigation,
+    .header__button:focus +.header__navigation {
+        display: block;
+    }
+    
+    /* затемнение блока сделать как-нибудь */
+    /* .header__button:hover + main>.brand {
+        opacity: 0.5;
+    } */
+    
+    .header__navigation:hover {
+        display: block;
+    }
+    
+    .header__person-link {
+        margin: 0 34px 0 0;
+    }
+    
+    .header__basket {
+        position: relative;
+        background-color: red;
+    }
+    
+    .header__basket:before {
+        content: '';
+        position: absolute;
+        width: 19px;
+        height: 19px;
+        background-image: url(../img/header/items.svg);
+        background-size: 19px 19px;
+        right: -9px;
+        top: -18px;
+    }
+}
+
+@media (max-width: $max-tablet-width) {
+    .header {
+        &__logo {
+            margin: 0 41px 0 16px;
+        }
+
+        .header__button {
+            margin: 0 25px 0 0;
+        }
+
+        .header__person-link {
+            margin: 0 25px 0 0;
+        }
+    }
+}
+
+@media (max-width: $max-mobile-width) {
+    .header {
+        &__logo {
+            margin: 0 41px 0 0px;
+        }
+
+        .header__button {
+            margin: 0;
+        }
+
+        .header__person-link {
+            display: none;
+        }
+
+        .header__basket {
+            display: none;
+        }
+    }
+}

@@ -47,15 +47,29 @@
         background-color: red;
     }
     
-    .header__basket:before {
-        content: '';
-        position: absolute;
-        width: 19px;
-        height: 19px;
-        background-image: url(../img/header/items.svg);
-        background-size: 19px 19px;
-        right: -9px;
-        top: -18px;
+    // .header__basket:before {
+    //     content: '';
+    //     position: absolute;
+    //     width: 19px;
+    //     height: 19px;
+    //     background-image: url(../img/header/items.svg);
+    //     background-size: 19px 19px;
+    //     right: -9px;
+    //     top: -18px;
+    // }
+
+    .cart-block{
+    /* box-shadow: 0 0 5px rgb(0 0 0 / 62%); */
+    border-radius: 5px;
+    box-sizing: border-box;
+    right: 0;
+    top: 2%;
+    position: absolute;
+    background-color: #222224;
+    padding: 20px;
+    color: white;
+    width: 300px;
+    z-index: 1;
     }
 }
 
